@@ -22,6 +22,7 @@ public class Pos extends LinhaTelefonica{
 
 
 	public boolean pagarFatura() {
+		
 		return true;
 	}
 }

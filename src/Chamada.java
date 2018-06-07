@@ -45,6 +45,12 @@ public class Chamada {
 	public void setCusto(float custo) {
 		this.custo = custo;
 	}
+
+	@Override
+	public String toString() {
+		return "\nChamada [transmissaold=" + transmissaold + ", horario=" + horario + ", destinatario=" + destinatario
+				+ ", custo=" + custo + "]";
+	}
 	
 	
 	

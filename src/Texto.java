@@ -15,6 +15,11 @@ public class Texto extends Chamada{
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
 	}
+
+	@Override
+	public String toString() {
+		return "\nTexto [conteudo=" + conteudo + "]";
+	}
 	
 	
 }

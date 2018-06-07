@@ -15,6 +15,12 @@ public class Voz extends Chamada {
 	public void setTermino(Calendar termino) {
 		this.termino = termino;
 	}
+
+	@Override
+	public String toString() {
+		return "\nVoz [termino=" + termino + "]";
+	}
+	
 	
 	
 }
