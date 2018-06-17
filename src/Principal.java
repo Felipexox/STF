@@ -10,7 +10,9 @@ public class Principal {
 		
 		Cliente cliente1 = new Cliente(0, "Cliente1", "CPF1", endereco1);
 		Cliente cliente2 = new Cliente(1, "Cliente2", "CPF2", endereco2);
-		
+		addCliente(cliente1);
+		addCliente(cliente2);
+		/*
 		
 		LinhaTelefonica linha1 = Pos.criar(cliente1);
 		LinhaTelefonica linha2 = Pos.criar(cliente2);
@@ -26,32 +28,87 @@ public class Principal {
 		if(linha1 instanceof Pos) {
 			((Pos)linha1).pagarFatura();
 		}
-		
+		*/
 		//Menu
-		Scanner input = new Scanner(System.in);
-		System.out.println("--------- Opcoes ---------");
-		System.out.println("- 1 - Cadastrar Cliente");
-		System.out.println("- 2 - Cadastrar Pre Pago");
-		System.out.println("- 3 - Cadastrar Pos Pago");
-		System.out.println("- 4 - Ligar");
-		System.out.println("- 5 - Recarregar");
-		System.out.println("- 6 - Pesquisar Cliente");
-		System.out.println("- 7 - Ligar");
-		int escolha = Integer.parseInt(input.nextLine());
-		switch(escolha) {
-			case 1:
-				Cliente cliente = Cliente.criar();
-				addCliente(cliente);
-				break;
-			case 2: 
-				System.out.println("Digite o CPF do cliente");
-				String cpf = input.nextLine();
-				Cliente tempCliente = pesquisarCliente(cpf);
-				Pre pre = Pre.criar();
-				break;
-		
-		}
-		
+		int escolha = 0;
+		do{
+			Scanner input = new Scanner(System.in);
+			System.out.println("--------- Opcoes ---------");
+			System.out.println("- 1 - Cadastrar Cliente   ");
+			System.out.println("- 2 - Cadastrar Pre Pago  ");
+			System.out.println("- 3 - Cadastrar Pos Pago  ");
+			System.out.println("- 4 - Ligar               ");
+			System.out.println("- 5 - Mensagem            ");
+			System.out.println("- 6 - Recarregar          ");
+			System.out.println("- 7 - Pesquisar Cliente   ");
+			System.out.println("- 8 - Pesquisar Linha Telefonica ");
+			System.out.println("- 9 - Sair                ");
+			escolha = Integer.parseInt(input.nextLine());
+			switch(escolha) {
+				case 1:
+					Cliente cliente = Cliente.criar();
+					addCliente(cliente);
+					break;
+				case 2: 
+					System.out.println("Digite o CPF do cliente");
+					String cpf = input.nextLine();
+					cliente = pesquisarCliente(cpf);
+					LinhaTelefonica pre = Pre.criar(cliente);
+					addLinha(pre);
+					break;
+				case 3:
+					System.out.println("Digite o CPF do cliente");
+					cpf = input.nextLine();
+					cliente = pesquisarCliente(cpf);
+					LinhaTelefonica pos = Pre.criar(cliente);
+					addLinha(pos);
+					break;
+				case 4:
+					System.out.println("Digite o numero origem");
+					String numeroOrigem = input.nextLine();
+					LinhaTelefonica linhaOrigem = LinhaTelefonica.pesquisarLinha(numeroOrigem, linhas);
+					System.out.println("Digite o numero destino");
+					String numeroDestino = input.nextLine();
+					LinhaTelefonica linhaDestino = LinhaTelefonica.pesquisarLinha(numeroDestino, linhas);
+					linhaOrigem.chamar(linhaDestino);
+					break;
+				case 5:
+					System.out.println("Digite o numero origem");
+					numeroOrigem = input.nextLine();
+					linhaOrigem = LinhaTelefonica.pesquisarLinha(numeroOrigem, linhas);
+					System.out.println("Digite o numero destino");
+					numeroDestino = input.nextLine();
+					linhaDestino = LinhaTelefonica.pesquisarLinha(numeroDestino, linhas);
+					System.out.println("Digite sua mensagem");
+					String mensagem = input.nextLine();
+					linhaOrigem.chamar(linhaDestino,mensagem);
+					break;
+				case 6:
+					System.out.println("Digite o numero origem");
+					numeroOrigem = input.nextLine();
+					LinhaTelefonica linha = LinhaTelefonica.pesquisarLinha(numeroOrigem, linhas);
+					if(linha instanceof Pre){
+						float valor = Float.parseFloat(input.nextLine());
+						((Pre)linha).recarregar(valor);
+					}else{
+						System.out.println("Essa linha não é pre paga");
+					}
+					break;
+				case 7:
+					System.out.println("Digite o CPF do cliente");
+					cpf = input.nextLine();
+					cliente = pesquisarCliente(cpf);
+					System.out.println("Informacoes do cliente:");
+					System.out.println(cliente);
+					break;
+				case 8:
+					System.out.println("Digite o numero origem");
+					numeroOrigem = input.nextLine();
+					linha = LinhaTelefonica.pesquisarLinha(numeroOrigem, linhas);
+					System.out.println(linha);
+					break;
+			}
+		}while(escolha != 9);
 	}
 	private static void addLinha(LinhaTelefonica linha){
 		int length = linhas.length;
@@ -79,4 +136,5 @@ public class Principal {
 		}
 		return null;
 	}
+	
 }
