@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Random;
 import java.util.Scanner;
 
 public class LinhaTelefonica {
@@ -67,8 +68,7 @@ public class LinhaTelefonica {
 
 
 
-	public static LinhaTelefonica criar() {
-		Cliente cliente = Cliente.criar();
+	public static LinhaTelefonica criar(Cliente cliente) {
 		Scanner inputString = new Scanner(System.in);
 		String numero;
 		Chamada[] chamadas = new Chamada[0];
@@ -88,14 +88,22 @@ public class LinhaTelefonica {
 	}
 	
 	public boolean chamar(LinhaTelefonica destinatario) {
-		//como é feito o calculo?
-		Voz chamada = new Voz(0, Calendar.getInstance() , destinatario, 100, Calendar.getInstance());
+		Random rand = new Random();
+		rand.setSeed(Calendar.getInstance().getTime().getTime());
+		Calendar inicio = Calendar.getInstance();
+		Calendar fim = Calendar.getInstance();
+		fim.add(Calendar.MINUTE, rand.nextInt(15));
+		System.out.println(fim.getTime().getTime());
+		float custo = ((fim.getTime().getTime()/6000) - (inicio.getTime().getTime()/6000)) * Utilitario.custoChamadaVoz; 
+		Voz chamada = new Voz(0, inicio , destinatario, custo , fim);
 		addChamada(chamada);
 		return true;
 	}
 	
 	public boolean chamar(LinhaTelefonica destinatario, String conteudo) {
-		Texto chamada = new Texto(0, Calendar.getInstance() , destinatario, 100, conteudo);
+		float sizeConteudo = conteudo.length();
+		float custo = ((sizeConteudo / Utilitario.comprimentoChamadaTexto) * Utilitario.custoChamadaTexto);
+		Texto chamada = new Texto(0, Calendar.getInstance() , destinatario, custo, conteudo);
 		addChamada(chamada);
 		return true;
 	}

@@ -18,7 +18,7 @@ public class Voz extends Chamada {
 
 	@Override
 	public String toString() {
-		return "\nVoz [termino=" + termino + "]";
+		return "\n"+super.toString()+" [Voz [termino=" + termino.getTime() + "]]";
 	}
 	
 	

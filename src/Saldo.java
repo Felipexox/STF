@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Saldo {
@@ -25,6 +26,13 @@ public class Saldo {
 	public void setVencimento(Calendar vencimento) {
 		this.vencimento = vencimento;
 	}
+
+	@Override
+	public String toString() {
+	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		return "Saldo [valor=" + valor + ", vencimento=" + sdf.format( vencimento.getTime()) + "]";
+	}
+	
 	
 	
 }

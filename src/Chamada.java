@@ -1,3 +1,6 @@
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Chamada {
@@ -48,8 +51,11 @@ public class Chamada {
 
 	@Override
 	public String toString() {
-		return "\nChamada [transmissaold=" + transmissaold + ", horario=" + horario + ", destinatario=" + destinatario
-				+ ", custo=" + custo + "]";
+		DateFormat dtHora = DateFormat.getDateTimeInstance();
+
+		DecimalFormat formatar = new DecimalFormat("0.00");
+		return "\nChamada [transmissaold=" + transmissaold + ", horario=" + dtHora.format(horario.getTime()) + ", destinatario=" + destinatario
+				+ ", custo=" + formatar.format(custo) + "]";
 	}
 	
 	

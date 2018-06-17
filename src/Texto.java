@@ -18,7 +18,7 @@ public class Texto extends Chamada{
 
 	@Override
 	public String toString() {
-		return "\nTexto [conteudo=" + conteudo + "]";
+		return super.toString()+"\nTexto [conteudo=" + conteudo + "]";
 	}
 	
 	
