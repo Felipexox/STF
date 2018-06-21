@@ -12,6 +12,7 @@ public class Principal {
 		Cliente cliente2 = new Cliente(1, "Cliente2", "CPF2", endereco2);
 		addCliente(cliente1);
 		addCliente(cliente2);
+		
 		/*
 		
 		LinhaTelefonica linha1 = Pos.criar(cliente1);
@@ -53,15 +54,23 @@ public class Principal {
 					System.out.println("Digite o CPF do cliente");
 					String cpf = input.nextLine();
 					cliente = pesquisarCliente(cpf);
-					LinhaTelefonica pre = Pre.criar(cliente);
-					addLinha(pre);
+					if(cliente != null){
+						LinhaTelefonica pre = Pre.criar(cliente);
+						addLinha(pre);
+					}else{
+						System.out.println("Cliente não encontrado");
+					}
 					break;
 				case 3:
 					System.out.println("Digite o CPF do cliente");
 					cpf = input.nextLine();
 					cliente = pesquisarCliente(cpf);
-					LinhaTelefonica pos = Pre.criar(cliente);
-					addLinha(pos);
+					if(cliente != null){
+						LinhaTelefonica pos = Pos.criar(cliente);
+						addLinha(pos);
+					}else{
+						System.out.println("Cliente não encontrado");
+					}
 					break;
 				case 4:
 					System.out.println("Digite o numero origem");
@@ -105,7 +114,11 @@ public class Principal {
 					System.out.println("Digite o numero origem");
 					numeroOrigem = input.nextLine();
 					linha = LinhaTelefonica.pesquisarLinha(numeroOrigem, linhas);
-					System.out.println(linha);
+					if(linha != null){
+						System.out.println(linha);
+					}else{
+						System.out.println("Linha não encontrada");
+					}
 					break;
 			}
 		}while(escolha != 9);

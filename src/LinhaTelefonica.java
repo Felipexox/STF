@@ -61,8 +61,8 @@ public class LinhaTelefonica {
 
 	@Override
 	public String toString() {
-		return "\nLinhaTelefonica [numero=" + numero + ", cliente=" + cliente + ", chamadas=" + Arrays.toString(chamadas)
-				+ "]";
+	
+		return "\nLinhaTelefonica [numero=" + numero + ", cliente=" + cliente + "\n chamadas=" + Arrays.toString(chamadas);
 	}
 
 
@@ -93,7 +93,6 @@ public class LinhaTelefonica {
 		Calendar inicio = Calendar.getInstance();
 		Calendar fim = Calendar.getInstance();
 		fim.add(Calendar.MINUTE, rand.nextInt(15));
-		System.out.println(fim.getTime().getTime());
 		float custo = ((fim.getTime().getTime()/6000) - (inicio.getTime().getTime()/6000)) * Utilitario.custoChamadaVoz; 
 		Voz chamada = new Voz(0, inicio , destinatario, custo , fim);
 		addChamada(chamada);

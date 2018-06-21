@@ -62,7 +62,7 @@ public class Pre extends LinhaTelefonica {
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "Pre [saldo=" + saldo + "]";
+		return super.toString() + "\n Tipo Linha: Pre Paga \n saldo:" + saldo;
 	}
 	
 }

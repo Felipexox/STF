@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Pos extends LinhaTelefonica{
@@ -18,6 +19,13 @@ public class Pos extends LinhaTelefonica{
 
 	public void setFaturas(Fatura[] faturas) {
 		this.faturas = faturas;
+	}
+
+	
+	
+	@Override
+	public String toString() {
+		return super.toString() + "\n Tipo Linha: Pos Paga \n faturas:" + Arrays.toString(faturas);
 	}
 
 	public static LinhaTelefonica criar(Cliente cliente) {

@@ -54,7 +54,7 @@ public class Chamada {
 		DateFormat dtHora = DateFormat.getDateTimeInstance();
 
 		DecimalFormat formatar = new DecimalFormat("0.00");
-		return "\nChamada [transmissaold=" + transmissaold + ", horario=" + dtHora.format(horario.getTime()) + ", destinatario=" + destinatario
+		return "\nChamada [transmissaold=" + transmissaold + ", horario=" + dtHora.format(horario.getTime()) + ", destinatario=" + destinatario.getNumero()
 				+ ", custo=" + formatar.format(custo) + "]";
 	}
 	
