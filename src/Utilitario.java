@@ -4,7 +4,8 @@ public class Utilitario {
 	public static int vencimentoRecarga = 90;
 	public static float custoChamadaVoz = 2;
 	public static float custoChamadaTexto = 2;
-	
+	public static int contLinhas = 0;
+	public static int contClientes = 0;
 	public static boolean recarregar(LinhaTelefonica[] linhas, String numero, float valor){
 		for(int i = 0; i < linhas.length; i++){
 			if(numero.equals(linhas[i].getNumero())){

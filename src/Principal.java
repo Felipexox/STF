@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Principal {
-	private static Cliente[] clientes = new Cliente[0];
-	private static LinhaTelefonica[] linhas = new LinhaTelefonica[0];
+	private static Cliente[] clientes = new Cliente[100];
+	private static LinhaTelefonica[] linhas = new LinhaTelefonica[100];
 	public static void main(String[] args) {
 		
 		Endereco endereco1 = new Endereco("rua1", 1, "cep1", "cidade1", "estado1");
@@ -124,22 +124,12 @@ public class Principal {
 		}while(escolha != 9);
 	}
 	private static void addLinha(LinhaTelefonica linha){
-		int length = linhas.length;
-		LinhaTelefonica[] newLinhas = new LinhaTelefonica[length+1];
-		for(int i = 0; i < linhas.length; i++){
-			newLinhas[i] = linhas[i];
-		}
-		newLinhas[length] = linha;
-		linhas = newLinhas;
+		linhas[Utilitario.contLinhas] = linha;
+		Utilitario.contLinhas++;
 	}
 	private static void addCliente(Cliente cliente){
-		int length = clientes.length;
-		Cliente[] newClientes = new Cliente[length+1];
-		for(int i = 0; i < clientes.length; i++){
-			newClientes[i] = clientes[i];
-		}
-		newClientes[length] = cliente;
-		clientes = newClientes;
+		clientes[Utilitario.contClientes] = cliente;
+		Utilitario.contClientes++;
 	}
 	private static Cliente pesquisarCliente(String cpf) {
 		for(int i = 0; i < clientes.length; i ++) {
