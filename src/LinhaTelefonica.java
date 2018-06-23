@@ -88,12 +88,14 @@ public class LinhaTelefonica {
 	}
 	
 	public boolean chamar(LinhaTelefonica destinatario) {
-		Random rand = new Random();
+		Random rand = new Random(Calendar.getInstance().getTimeInMillis());
 		rand.setSeed(Calendar.getInstance().getTime().getTime());
 		Calendar inicio = Calendar.getInstance();
 		Calendar fim = Calendar.getInstance();
 		fim.add(Calendar.MINUTE, rand.nextInt(15));
-		float custo = ((fim.getTime().getTime()/6000) - (inicio.getTime().getTime()/6000)) * Utilitario.custoChamadaVoz; 
+		float minInicio = (float)(inicio.getTimeInMillis())/60000;
+		float minFim = (float)(fim.getTimeInMillis())/60000;
+		float custo = (minFim - minInicio) * Utilitario.custoChamadaVoz; 
 		Voz chamada = new Voz(0, inicio , destinatario, custo , fim);
 		addChamada(chamada);
 		return true;

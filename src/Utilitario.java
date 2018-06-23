@@ -6,7 +6,14 @@ public class Utilitario {
 	public static float custoChamadaTexto = 2;
 	
 	public static boolean recarregar(LinhaTelefonica[] linhas, String numero, float valor){
-		
-		return true;
+		for(int i = 0; i < linhas.length; i++){
+			if(numero.equals(linhas[i].getNumero())){
+				if(linhas[i] instanceof Pre){
+					((Pre) linhas[i]).recarregar(valor);
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }

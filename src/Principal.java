@@ -111,7 +111,7 @@ public class Principal {
 					System.out.println(cliente);
 					break;
 				case 8:
-					System.out.println("Digite o numero origem");
+					System.out.println("Digite o numero");
 					numeroOrigem = input.nextLine();
 					linha = LinhaTelefonica.pesquisarLinha(numeroOrigem, linhas);
 					if(linha != null){
