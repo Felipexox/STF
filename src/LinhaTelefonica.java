@@ -78,7 +78,7 @@ public class LinhaTelefonica {
 	}
 	
 	public static LinhaTelefonica pesquisarLinha(String numero, LinhaTelefonica[] linhas) {
-		for(int i = 0; i < linhas.length; i++ ){
+		for(int i = 0; i < Utilitario.contLinhas; i++ ){
 			if(numero.equals(linhas[i].numero)){
 				return linhas[i];
 			}

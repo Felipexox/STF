@@ -76,9 +76,17 @@ public class Principal {
 					System.out.println("Digite o numero origem");
 					String numeroOrigem = input.nextLine();
 					LinhaTelefonica linhaOrigem = LinhaTelefonica.pesquisarLinha(numeroOrigem, linhas);
+					if(linhaOrigem == null){
+						System.out.println("Numero inexistente");
+						break;
+					}
 					System.out.println("Digite o numero destino");
 					String numeroDestino = input.nextLine();
 					LinhaTelefonica linhaDestino = LinhaTelefonica.pesquisarLinha(numeroDestino, linhas);
+					if(linhaDestino == null){
+						System.out.println("Numero inexistente");
+						break;
+					}
 					linhaOrigem.chamar(linhaDestino);
 					break;
 				case 5:
@@ -132,7 +140,7 @@ public class Principal {
 		Utilitario.contClientes++;
 	}
 	private static Cliente pesquisarCliente(String cpf) {
-		for(int i = 0; i < clientes.length; i ++) {
+		for(int i = 0; i < Utilitario.contClientes; i ++) {
 			if(clientes[i].getCpf().equals(cpf)) {
 				return clientes[i];
 			}

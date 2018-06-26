@@ -7,7 +7,7 @@ public class Utilitario {
 	public static int contLinhas = 0;
 	public static int contClientes = 0;
 	public static boolean recarregar(LinhaTelefonica[] linhas, String numero, float valor){
-		for(int i = 0; i < linhas.length; i++){
+		for(int i = 0; i < contLinhas; i++){
 			if(numero.equals(linhas[i].getNumero())){
 				if(linhas[i] instanceof Pre){
 					((Pre) linhas[i]).recarregar(valor);
